@@ -50,8 +50,8 @@ dcRed  = 100
 
 def ligaLed():
     print("Ligando o Led")
-    pwmGreen.ChangeDutyCycle(100)
+    pwmRed.ChangeDutyCycle(100)
 
 def desligaLed():
     print("Desligando o Led")
-    pwmGreen.ChangeDutyCycle(0)
+    pwmRed.ChangeDutyCycle(0)

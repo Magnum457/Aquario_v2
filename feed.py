@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 
 # define o pino(BCM) para o servo
@@ -20,23 +20,28 @@ duty_range = pulse_range * k
 ang = 50
 
 # usa o mapa de portas da placa
-# GPIO.setmode(GPIO.BCM)
-# GPIO.setup(servo_pin,GPIO.OUT)
-# pwm = GPIO.PWM(servo_pin,f)
-# pwm.start(0)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(servo_pin,GPIO.OUT)
+pwm = GPIO.PWM(servo_pin,f)
+pwm.start(0)
 
 # calcula o ângulo a ser passado para o servo
+def define_angle(angle):
+    print("setando o angulo")
+    duty = deg_0_duty + (angle/180.0)* duty_range
+    print(str(duty))
+    pwm.ChangeDutyCycle(round(duty,3))
+    
 def set_angle(payload):
-    # duty = deg_0_duty + (angle/180.0)* duty_range
-    # pwm.ChangeDutyCycle(round(duty,3))
-        
-    if (payload == "fechado"):
-        # set_angle(47)
+    if (payload == 0):
+        define_angle(47)
         print("angulo de 47")
-    elif (payload == "meio aberto"):
-        # set_angle(60)
+    elif (payload == 1):
+        define_angle(60)
         print("angulo de 60")
-    elif (payload == "aberto"):
-        # set_angle(80)
+    elif (payload == 2):
+        define_angle(80)
         print("angulo de 80")
+    else:
+        print("comando errado")
     # GPIO.cleanup()

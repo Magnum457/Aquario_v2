@@ -7,8 +7,8 @@ from threading import Thread
 # import rele
 
 # Dados
-server = "ec2-44-227-11-98.us-west-2.compute.amazonaws.com"
-port = "1883"
+server = "44.227.11.98"
+port = 1883
 user = ""
 passwd = ""
 
@@ -28,16 +28,16 @@ def loop_nivel():
             bot, estado = setup()
             if GPIO.input(bot)==0:
                     estado = 0
-                    print("Cheio")
-                    client.publish("aquario/nivel", "cheio")
+                    # print("Cheio")
+                    client.publish("aquario/nivel", 1)
 
             elif GPIO.input(bot)==1:
                     estado = 1
-                    print("Não Cheio")
-                    client.publish("aquario/nivel", "não cheio")
+                    # print("Não Cheio")
+                    client.publish("aquario/nivel", 0)
             #         rele.ligaRele()
             # client.publish("aquario/nivel", "cheio")
-            time.sleep(1)
+            time.sleep(10)
                         
     finally:
         print("fechando as GPIOs")

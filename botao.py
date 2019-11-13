@@ -7,8 +7,6 @@ import paho.mqtt.client as mqtt
 import led_power
 
 # GPIO.setmode (GPIO.BCM) # usa o mapa de portas da placa
-# pin_pw = 12
-# GPIO.setup (pin_pw, GPIO.OUT)
 # pin_con = 5
 # GPIO.setup (pin_con, GPIO.OUT) 
 
@@ -18,11 +16,9 @@ def ligar_aquario():
     botao = 1
     # for i in range(10):
             # time.sleep(1)
-            # GPIO.output(pin_pw,0)
             # GPIO.output(pin_con,1)
             # time.sleep(1)
-            # GPIO.output(pin_pw,1)
-            # GPIO.output(pin_con,0)True
+            # GPIO.output(pin_con,0) 
             # time.sleep(1)
     while botao != 0:
         # if(conexao.conecta_thread.is_alive() != True):

@@ -10,8 +10,8 @@ os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 
 # Dados
-server = "ec2-44-227-11-98.us-west-2.compute.amazonaws.com"
-port = "1883"
+server = "44.227.11.98"
+port = 1883
 user = ""
 passwd = ""
  
@@ -45,6 +45,6 @@ def loop_temp():
         client = mqtt.Client()
         client.connect(server, port, 60)
         client.publish("aquario/temperatura", temp_c)
-        time.sleep(0.5)
+        time.sleep(10)
 
 temp_thread = Thread(target = loop_temp)
